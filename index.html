@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arraiá &amp; Copa do Infantil 4B · 13 de Junho de 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ── ESTILOS BÁSICOS & CORES ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --maroon: #7c2d12; --amber: #b45309; --gold: #d97706; --bright: #fbbf24;
+  --green: #15803d;  --cream: #fffbf0; --paper: #fef3c7;
+  --text: #1c1917;   --mid: #78716c;   --light: #a8a29e;
+  --shadow: 0 4px 24px rgba(0,0,0,0.09), 0 1px 4px rgba(0,0,0,0.04);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Nunito', system-ui, sans-serif; background: var(--cream); color: var(--text); line-height: 1.65; }
+
+/* ── ANIMAÇÕES ── */
+@keyframes twinkle  { 0%,100%{opacity:.15;transform:scale(.7)} 50%{opacity:1;transform:scale(1.2)} }
+@keyframes float    { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes fadeUp   { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:translateY(0)} }
+@keyframes pulsedot { 0%,100%{box-shadow:0 0 0 0 rgba(217,119,6,.5)} 60%{box-shadow:0 0 0 8px rgba(217,119,6,0)} }
+@keyframes gshift   { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+@keyframes shimmer  { 0%{background-position:-300% center} 100%{background-position:300% center} }
+
+.fu { animation: fadeUp .7s cubic-bezier(.22,1,.36,1) both; }
+.d1{animation-delay:.08s} .d2{animation-delay:.18s} .d3{animation-delay:.28s}
+.d4{animation-delay:.38s} .d5{animation-delay:.48s} .d6{animation-delay:.58s}
+.d7{animation-delay:.68s} .d8{animation-delay:.78s}
+
+/* ── HERO HEADER ── */
+.hero {
+  position:relative; overflow:hidden;
+  background:linear-gradient(155deg,#0d0320 0%,#3b0a0a 30%,#7c2d12 60%,#c2520f 85%,#d97706 100%);
+  background-size:300% 300%; animation:gshift 14s ease infinite;
+}
+.hero::after {
+  content:''; position:absolute; inset:0;
+  background: radial-gradient(ellipse at 25% 60%, rgba(255,150,20,.07),transparent 55%),
+              radial-gradient(ellipse at 75% 30%, rgba(80,0,120,.12),transparent 55%);
+  pointer-events:none; z-index:1;
+}
+.stars { position:absolute; inset:0; pointer-events:none; z-index:2; }
+.star  { position:absolute; color:#fcd34d; user-select:none;
+         animation:twinkle var(--d,2.5s) ease-in-out infinite; animation-delay:var(--dl,0s); }
+.hero-inner { position:relative; z-index:3; text-align:center; padding:3.5rem 1.5rem 2rem; }
+.hero-emoji { display:block; font-size:2.8rem; margin-bottom:1rem; animation:float 5s ease-in-out infinite; }
+.hero-title { font-family:'Abril Fatface',serif; font-size:clamp(2rem,6.5vw,3.8rem); color:#fef3c7;
+              line-height:1.08; text-shadow:2px 5px 18px rgba(0,0,0,.55); margin-bottom:.75rem; }
+.hero-sub   { font-weight:800; font-size:1.05rem; color:#fde68a; letter-spacing:.04em; margin-bottom:.5rem; }
+.hero-loc   { display:inline-flex; align-items:center; gap:.45rem;
+              background:rgba(255,255,255,.13); backdrop-filter:blur(4px);
+              border:1px solid rgba(255,255,255,.22); border-radius:99px;
+              padding:.35rem 1.1rem; color:#fef9ec; font-size:.88rem; font-weight:700; }
+.prow { display:block; width:100%; line-height:0; position:relative; z-index:4; }
+.prow svg { display:block; width:100%; }
+
+/* ── LAYOUT ── */
+main { max-width:880px; margin:0 auto; padding:0 1rem; }
+.sec { margin:2.75rem 0; }
+.slabel { display:inline-flex; align-items:center; gap:.4rem; font-size:.7rem; font-weight:800;
+          letter-spacing:.1em; text-transform:uppercase; color:var(--amber); margin-bottom:.55rem; }
+.stitle { font-family:'Abril Fatface',serif; font-size:clamp(1.4rem,4vw,2rem);
+          color:var(--maroon); margin-bottom:1.2rem; line-height:1.15; }
+
+/* ── CARDS DE INFORMAÇÃO ── */
+.card { background:white; border-radius:1.1rem; box-shadow:var(--shadow); overflow:hidden;
+        transition:transform .22s ease, box-shadow .22s ease; }
+.card:hover { transform:translateY(-3px); box-shadow:0 10px 36px rgba(0,0,0,.12); }
+.card-accent { height:4px; width:100%; }
+.card-body   { padding:1.3rem; }
+.grid2 { display:grid; grid-template-columns:1fr; gap:1rem; }
+@media(min-width:600px){ .grid2 { grid-template-columns:1fr 1fr; } }
+.pbadge { display:inline-block; font-size:.68rem; font-weight:800; letter-spacing:.06em;
+          text-transform:uppercase; padding:.25rem .8rem; border-radius:99px; margin-bottom:.7rem; }
+.ptitle { font-weight:900; font-size:1.15rem; margin-bottom:.55rem; }
+.ptext  { font-size:.875rem; line-height:1.65; color:var(--mid); }
+ul.blist { list-style:none; margin-top:.6rem; }
+ul.blist li { font-size:.875rem; color:var(--mid); padding:.18rem 0; display:flex; gap:.5rem; }
+ul.blist li::before { content:'›'; color:var(--gold); font-weight:900; font-size:1.1rem; flex-shrink:0; line-height:1.3; }
+
+/* ── CAIXAS DE DESTAQUE ── */
+.callout { border-radius:1rem; padding:1.15rem 1.4rem; margin-bottom:1rem; }
+.ca { background:#fff7ed; border-left:4px solid var(--gold); }
+.cg { background:#f0fdf4; border-left:4px solid var(--green); }
+.cr { background:#fff1f2; border-left:4px solid #e11d48; }
+.ctitle { font-weight:900; font-size:.95rem; margin-bottom:.35rem; }
+.ctext  { font-size:.875rem; line-height:1.65; color:var(--mid); }
+hr.div  { border:none; border-top:1px dashed #e5e7eb; margin:2.25rem 0; }
+
+/* ── LINHA DO TEMPO (CRONOGRAMA) ── */
+.timeline { position:relative; padding-left:2.2rem; }
+.timeline::before {
+  content:''; position:absolute; left:.68rem; top:.5rem; bottom:.5rem; width:2px;
+  background:linear-gradient(to bottom,var(--gold) 0%,var(--green) 100%); border-radius:2px;
+}
+.tl-item { position:relative; padding:0 0 1.3rem 1.2rem; }
+.tl-item:last-child { padding-bottom:0; }
+.tl-dot { position:absolute; left:-1.55rem; top:.2rem; width:1.1rem; height:1.1rem; border-radius:50%;
+          background:var(--gold); border:2.5px solid white; box-shadow:0 0 0 3px var(--gold);
+          animation:pulsedot 2.8s ease-in-out infinite; animation-delay:var(--pd,0s); }
+.tl-dot.g { background:var(--green); box-shadow:0 0 0 3px var(--green); animation:none; }
+.tl-time  { font-size:.7rem; font-weight:800; color:var(--amber); text-transform:uppercase; letter-spacing:.05em; margin-bottom:.1rem; }
+.tl-name  { font-weight:800; font-size:.95rem; color:var(--text); margin-bottom:.1rem; }
+.tl-desc  { font-size:.82rem; color:var(--mid); line-height:1.55; }
+
+/* ── ESTATÍSTICAS (GERADAS POR JS) ── */
+.stats-container { display:grid; grid-template-columns:repeat(2,1fr); gap:.8rem; }
+@media(min-width:480px){ .stats-container { grid-template-columns:repeat(5,1fr); } }
+.scard  { background:white; border-radius:.9rem; padding:1rem; text-align:center; box-shadow:var(--shadow); }
+.sico   { font-size:1.5rem; display:block; margin-bottom:.3rem; }
+.sval   { font-weight:900; font-size:1.6rem; line-height:1; display:block; }
+.slbl   { font-size:.65rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--light); display:block; margin-top:.25rem; }
+
+/* ── BANNER DE AVISO ── */
+.save-banner { background:linear-gradient(120deg,#14532d,#166534); border-radius:1rem;
+               padding:1rem 1.4rem; display:flex; align-items:center; gap:1rem; color:white; margin-bottom:1.25rem; }
+.save-ico { font-size:2rem; flex-shrink:0; }
+.save-txt { font-size:.875rem; line-height:1.55; }
+.save-txt strong { display:block; font-size:.95rem; margin-bottom:.2rem; color:#fde047; }
+
+/* ── TABELAS (GERADAS POR JS) ── */
+.tw { overflow-x:auto; border-radius:1rem; box-shadow:var(--shadow); }
+table { width:100%; border-collapse:collapse; background:white; font-size:.86rem; }
+th { background:#1c1917; color:#fef3c7; font-size:.68rem; font-weight:800; text-transform:uppercase;
+     letter-spacing:.06em; padding:.75rem 1rem; text-align:left; white-space:nowrap; }
+th.r { text-align:right; }
+td   { padding:.72rem 1rem; border-bottom:1px solid #f3f4f6; vertical-align:middle; }
+tr:last-child td { border-bottom:none; }
+tr.tot td { background:#fef9ec; font-weight:800; border-top:2px solid var(--gold); }
+.bconf { display:inline-flex; align-items:center; gap:3px; background:#dcfce7; color:#15803d;
+         font-size:.67rem; font-weight:800; padding:2px 8px; border-radius:99px; }
+.bref  { display:inline-flex; align-items:center; gap:3px; background:#fef3c7; color:#92400e;
+         font-size:.67rem; font-weight:800; padding:2px 8px; border-radius:99px; }
+.bwarn { display:inline-flex; align-items:center; gap:3px; background:#fee2e2; color:#b91c1c;
+         font-size:.67rem; font-weight:800; padding:2px 8px; border-radius:99px; }
+.rtable tr:nth-child(even) td { background:#fafafa; }
+.rtable tr:hover td { background:#fff7ed; transition:background .1s; }
+.cval { font-weight:800; color:var(--green); }
+.apag { display:inline-block; font-weight:900; color:white; background:var(--gold);
+        padding:3px 10px; border-radius:6px; font-size:.9rem; }
+.tag  { display:inline-block; font-size:.67rem; font-weight:700; padding:2px 6px; border-radius:4px; margin:1px; }
+.ta   { background:#e0e7ff; color:#3730a3; }
+.tk   { background:#fef9c3; color:#713f12; }
+.tb   { background:#fce7f3; color:#9d174d; }
+.tbb  { background:#f3f4f6; color:#374151; }
+
+/* ── CAIXA DO PIX ── */
+.pix-box { background:linear-gradient(140deg,#0f172a 0%,#1e3a5f 100%);
+           border-radius:1.25rem; padding:2rem; text-align:center; color:white;
+           position:relative; overflow:hidden; }
+.pix-box::before { content:''; position:absolute; inset:0;
+                   background:radial-gradient(circle at 50% 40%,rgba(251,191,36,.1),transparent 65%);
+                   pointer-events:none; }
+.pix-key   { display:inline-block; background:rgba(251,191,36,.14); border:1.5px solid rgba(251,191,36,.4);
+             border-radius:.6rem; padding:.6rem 1.4rem; font-family:'Courier New',monospace;
+             font-size:1rem; font-weight:700; color:#fbbf24; letter-spacing:.02em; margin:.7rem 0; word-break:break-all; }
+.pix-badge { display:inline-block; background:linear-gradient(90deg,var(--gold),var(--bright));
+             background-size:200% auto; animation:shimmer 3s linear infinite;
+             color:#7c2d12; font-weight:900; font-size:.75rem; padding:.3rem 1rem;
+             border-radius:99px; text-transform:uppercase; letter-spacing:.08em; margin-bottom:.75rem; }
+.nota { background:var(--paper); border:1px dashed var(--gold); border-radius:.8rem;
+        padding:1rem 1.2rem; font-size:.82rem; color:var(--mid); line-height:1.65; margin-top:.9rem; }
+.nota strong { color:var(--text); }
+
+footer { text-align:center; padding:2.5rem 1rem; color:var(--light); font-size:.8rem; }
+footer p + p { margin-top:.3rem; }
+
+@media(hover:none){ .card:hover { transform:none; box-shadow:var(--shadow); } }
+@media print { .hero{background:#7c2d12!important;animation:none!important} .star,.hero::after{display:none} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="stars" aria-hidden="true">
+    <span class="star" style="left:3%;top:22%;font-size:11px;--d:2.2s;--dl:0s">★</span>
+    <span class="star" style="left:9%;top:68%;font-size:8px;--d:3.1s;--dl:.4s">★</span>
+    <span class="star" style="left:17%;top:14%;font-size:15px;--d:2.8s;--dl:.9s">✦</span>
+    <span class="star" style="left:50%;top:17%;font-size:14px;--d:2.1s;--dl:1.1s">★</span>
+    <span class="star" style="left:73%;top:79%;font-size:13px;--d:2.3s;--dl:.3s">★</span>
+    <span class="star" style="left:97%;top:73%;font-size:12px;--d:3.2s;--dl:1.0s">★</span>
+  </div>
+
+  <div class="hero-inner">
+    <span class="hero-emoji" aria-hidden="true">🎪 ⚽ 🪗</span>
+    <h1 class="hero-title">Arraiá &amp; Copa<br>do Infantil 4B</h1>
+    <p class="hero-sub">13 de Junho de 2026</p>
+    <p style="margin-top:.6rem">
+      <span class="hero-loc">📍 Salão de Festas · Ed. Mendo Sampaio · Praça do Monteiro, 2665</span>
+    </p>
+  </div>
+
+  <div class="prow">
+    <svg viewBox="0 0 1400 68" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+      <path d="M0,10 Q175,4 350,10 Q525,16 700,10 Q875,4 1050,10 Q1225,16 1400,10" stroke="rgba(255,255,255,.4)" stroke-width="1.5" fill="none"/>
+      <polygon points="25,10 55,10 40,62"  fill="#ef4444"><animateTransform attributeName="transform" type="rotate" values="-3 40 10;3 40 10;-3 40 10" dur="2.8s" repeatCount="indefinite"/></polygon>
+      <polygon points="100,10 130,10 115,62" fill="#f59e0b"><animateTransform attributeName="transform" type="rotate" values="-3 115 10;3 115 10;-3 115 10" dur="3.1s" repeatCount="indefinite"/></polygon>
+      <polygon points="175,10 205,10 190,62" fill="#3b82f6"><animateTransform attributeName="transform" type="rotate" values="-3 190 10;3 190 10;-3 190 10" dur="2.6s" repeatCount="indefinite"/></polygon>
+      <polygon points="250,10 280,10 265,62" fill="#22c55e"><animateTransform attributeName="transform" type="rotate" values="-3 265 10;3 265 10;-3 265 10" dur="3.3s" repeatCount="indefinite"/></polygon>
+      <polygon points="325,10 355,10 340,62" fill="#a855f7"><animateTransform attributeName="transform" type="rotate" values="-3 340 10;3 340 10;-3 340 10" dur="2.9s" repeatCount="indefinite"/></polygon>
+      <polygon points="400,10 430,10 415,62" fill="#f97316"><animateTransform attributeName="transform" type="rotate" values="-3 415 10;3 415 10;-3 415 10" dur="2.7s" repeatCount="indefinite"/></polygon>
+      <polygon points="475,10 505,10 490,62" fill="#06b6d4"><animateTransform attributeName="transform" type="rotate" values="-3 490 10;3 490 10;-3 490 10" dur="3.2s" repeatCount="indefinite"/></polygon>
+      <polygon points="550,10 580,10 565,62" fill="#eab308"><animateTransform attributeName="transform" type="rotate" values="-3 565 10;3 565 10;-3 565 10" dur="2.8s" repeatCount="indefinite"/></polygon>
+      <polygon points="625,10 655,10 640,62" fill="#ec4899"><animateTransform attributeName="transform" type="rotate" values="-3 640 10;3 640 10;-3 640 10" dur="3.0s" repeatCount="indefinite"/></polygon>
+      <polygon points="700,10 730,10 715,62" fill="#ef4444"><animateTransform attributeName="transform" type="rotate" values="-3 715 10;3 715 10;-3 715 10" dur="2.5s" repeatCount="indefinite"/></polygon>
+      <polygon points="775,10 805,10 790,62" fill="#f59e0b"><animateTransform attributeName="transform" type="rotate" values="-3 790 10;3 790 10;-3 790 10" dur="3.4s" repeatCount="indefinite"/></polygon>
+      <polygon points="850,10 880,10 865,62" fill="#3b82f6"><animateTransform attributeName="transform" type="rotate" values="-3 865 10;3 865 10;-3 865 10" dur="2.9s" repeatCount="indefinite"/></polygon>
+      <polygon points="925,10 955,10 940,62" fill="#22c55e"><animateTransform attributeName="transform" type="rotate" values="-3 940 10;3 940 10;-3 940 10" dur="3.1s" repeatCount="indefinite"/></polygon>
+      <polygon points="1000,10 1030,10 1015,62" fill="#a855f7"><animateTransform attributeName="transform" type="rotate" values="-3 1015 10;3 1015 10;-3 1015 10" dur="2.7s" repeatCount="indefinite"/></polygon>
+      <polygon points="1075,10 1105,10 1090,62" fill="#f97316"><animateTransform attributeName="transform" type="rotate" values="-3 1090 10;3 1090 10;-3 1090 10" dur="3.2s" repeatCount="indefinite"/></polygon>
+      <polygon points="1150,10 1180,10 1165,62" fill="#06b6d4"><animateTransform attributeName="transform" type="rotate" values="-3 1165 10;3 1165 10;-3 1165 10" dur="2.6s" repeatCount="indefinite"/></polygon>
+      <polygon points="1225,10 1255,10 1240,62" fill="#eab308"><animateTransform attributeName="transform" type="rotate" values="-3 1240 10;3 1240 10;-3 1240 10" dur="3.0s" repeatCount="indefinite"/></polygon>
+      <polygon points="1300,10 1330,10 1315,62" fill="#ec4899"><animateTransform attributeName="transform" type="rotate" values="-3 1315 10;3 1315 10;-3 1315 10" dur="2.8s" repeatCount="indefinite"/></polygon>
+      <polygon points="1370,10 1400,10 1385,62" fill="#ef4444"><animateTransform attributeName="transform" type="rotate" values="-3 1385 10;3 1385 10;-3 1385 10" dur="3.3s" repeatCount="indefinite"/></polygon>
+    </svg>
+  </div>
+</header>
+
+<main>
+
+  <section class="sec fu d1">
+    <p class="slabel">✨ O Evento</p>
+    <h2 class="stitle">Uma festa em duas partes</h2>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-accent" style="background:linear-gradient(90deg,#f97316,#fbbf24)"></div>
+        <div class="card-body">
+          <span class="pbadge" style="background:#fff7ed;color:#c2420f">☀️ 1ª Parte · Tarde</span>
+          <p class="ptitle" style="color:#7c2d12">🎪 Festa Junina</p>
+          <p class="ptext">A nossa confraternização tradicional, com um espírito <strong>colaborativo e muito forró</strong> este ano!</p>
+          <ul class="blist">
+            <li>Recreação animada com o querido Tio Thiago</li>
+            <li>Trio Pé de Serra raiz para animar todo mundo 🪗</li>
+            <li>Buffet Jailson — salgados, doces &amp; bebidas</li>
+            <li>Decoração colaborativa, feita a muitas mãos!</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-accent" style="background:linear-gradient(90deg,#15803d,#4ade80)"></div>
+        <div class="card-body">
+          <span class="pbadge" style="background:#f0fdf4;color:#15803d">⚽ 2ª Parte · A partir das 19h</span>
+          <p class="ptitle" style="color:#14532d">🇧🇷 Brasil × Marrocos</p>
+          <p class="ptext">Continuamos juntos para torcer pelo Brasil na Copa do Mundo! De um jeito leve e prático:</p>
+          <ul class="blist">
+            <li>O buffet encerra antes do jogo</li>
+            <li>Cada família pede o que quiser via <strong>iFood</strong></li>
+            <li>Ou traz pratinhos de casa — pizza, sushi...</li>
+            <li>Conta individual, sem rateio nesta parte 🍕🏆</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <section class="sec fu d2">
+    <p class="slabel">🎨 Espírito Colaborativo</p>
+    <h2 class="stitle">Decoração &amp; Música</h2>
+    <div class="callout ca">
+      <p class="ctitle" style="color:#92400e">🎨 Decoração — Traga a sua!</p>
+      <p class="ctext">Este ano a decoração é construída <strong>a muitas mãos</strong>! Cada família prepara em casa enfeites com tema junino e/ou Copa do Mundo e traz no dia. Chegando, montamos tudo juntos — crianças são muito bem-vindas para participar! 🌽🏆</p>
+    </div>
+    <div class="callout cg">
+      <p class="ctitle" style="color:#14532d">🪗 Música — Trio Pé de Serra & Halftime Show!</p>
+      <p class="ctext">Mudamos a lógica da diversão: substituímos o brinquedo inflável por um autêntico <strong>Trio Pé de Serra</strong>! Assim garantimos o clima junino raiz e a animação tanto das crianças quanto dos adultos. E o <strong>João Victor</strong>? Ele não escapou! Fica responsável por comandar o nosso "Show do Intervalo" do jogo do Brasil direto na nossa caixinha JBL! 🎶🏆</p>
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <section class="sec fu d3">
+    <p class="slabel">🕐 Cronograma</p>
+    <h2 class="stitle">Como vai ser o dia</h2>
+    <div class="card">
+      <div class="card-body">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot" style="--pd:0s"></div>
+            <p class="tl-time">15h00</p>
+            <p class="tl-name">🏠 Chegada &amp; Abertura do Buffet</p>
+            <p class="tl-desc">Chegada das famílias, montagem colaborativa da decoração e o Buffet Jailson já começa a servir as delícias!</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="--pd:.4s"></div>
+            <p class="tl-time">15h30</p>
+            <p class="tl-name">🎭 Recreação — Tio Thiago</p>
+            <p class="tl-desc">Tio Thiago assume o comando com brincadeiras animadas para as crianças até as 18h30.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="--pd:.8s"></div>
+            <p class="tl-time">15h30</p>
+            <p class="tl-name">🪗 Trio Pé de Serra Raiz</p>
+            <p class="tl-desc">O trio começa a tocar o autêntico forró pra animar os adultos e colocar a criançada pra dançar!</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="--pd:1.2s"></div>
+            <p class="tl-time">18h30</p>
+            <p class="tl-name">🛑 Fim da Recreação & Trio</p>
+            <p class="tl-desc">Hora de agradecer ao Tio Thiago e ao Trio Pé de Serra e começar a focar no jogo!</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot" style="--pd:1.6s"></div>
+            <p class="tl-time">19h00</p>
+            <p class="tl-name">🍔 Encerramento do Buffet</p>
+            <p class="tl-desc">Fim do buffet contratado. Organize seu pedido do iFood ou pratinhos de casa para o jogo.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot g"></div>
+            <p class="tl-time" style="color:var(--green)">19h00 ⚽</p>
+            <p class="tl-name" style="color:#14532d">🇧🇷 Brasil × Marrocos + Show do Intervalo</p>
+            <p class="tl-desc">O grande momento! Conta individual. E no intervalo do jogo, a música fica por conta do <strong>João Victor</strong> na JBL! <strong>VAI, BRASIL! 🏆🟡🟢</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <section class="sec fu d4">
+    <p class="slabel">👨‍👩‍👧‍👦 A Turma</p>
+    <h2 class="stitle">Quem vem?</h2>
+    
+    <div class="stats-container" id="container-estatisticas"></div>
+    
+    <p style="font-size:.76rem;color:var(--light);margin-top:.75rem;text-align:center" id="texto-estatisticas">
+      Calculando turma...
+    </p>
+  </section>
+
+  <hr class="div">
+
+  <section class="sec fu d5">
+    <p class="slabel">💸 Transparência Total</p>
+    <h2 class="stitle">Custos & Serviços</h2>
+    <div class="save-banner">
+      <span class="save-ico">🔄</span>
+      <div class="save-txt">
+        <strong>Nova Lógica de Diversão!</strong>
+        Trocamos o aluguel do brinquedo inflável por um <strong>Trio Pé de Serra</strong>. O valor base estimado é o mesmo (R$ 500), mas dividimos entre todas as famílias para garantir diversão para todas as idades! <em>(Ainda sujeito à confirmação final de cotação/disponibilidade).</em>
+      </div>
+    </div>
+    <div class="tw">
+      <table>
+        <thead>
+          <tr>
+            <th>Serviço / Item</th>
+            <th class="r">Valor Total</th>
+            <th>Base de Rateio</th>
+            <th class="r">Por Unidade</th>
+            <th>Situação</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-servicos"></tbody>
+      </table>
+    </div>
+    <div class="nota">
+      <strong>📌 Regras de divisão (Nova Lógica):</strong> 
+      <ul>
+        <li><strong>Buffet:</strong> Adultos pagam peso 1 (cheio). Crianças e Babás pagam peso 0,5 (meio). Bebês não pagam.</li>
+        <li><strong>Recreação:</strong> Rateada exclusivamente entre o total de crianças maiores.</li>
+        <li><strong>Salão & Trio Pé de Serra:</strong> Rateados igualmente por Família.</li>
+      </ul>
+      A 2ª parte (jogo da Copa) é de consumo individual por família — sem rateio coletivo.
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <section class="sec fu d6">
+    <p class="slabel">👨‍👩‍👧 Por Família</p>
+    <h2 class="stitle">Quanto é a sua parte?</h2>
+    <div class="callout cr" style="margin-bottom:1.2rem">
+      <p class="ctitle" style="color:#9f1239">🚨 Pagamento antecipado de 50% — urgente!</p>
+      <p class="ctext">Falta menos de 1 mês para o evento! Para fecharmos os fornecedores, pedimos que cada família envie <strong>50% da cota estimada</strong> o quanto antes. O valor restante será cobrado após confirmarmos os custos finais do salão, da recreação e do trio.</p>
+    </div>
+    <div class="tw">
+      <table class="rtable">
+        <thead>
+          <tr>
+            <th>Família</th>
+            <th>Composição (Cálculo)</th>
+            <th class="r">Cota Estimada</th>
+            <th class="r" style="background:var(--gold);color:white">⚡ 50% Agora</th>
+          </tr>
+        </thead>
+        <tbody id="tabela-rateio"></tbody>
+      </table>
+    </div>
+    <div class="nota">
+      <strong>📌 Nota:</strong> Os itens com aviso ⚠️ são estimativas.
+      Uma versão atualizada desta página será compartilhada com os custos confirmados e a cobrança do saldo restante.
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <section class="sec fu d7">
+    <p class="slabel">💳 Pagamento</p>
+    <h2 class="stitle">Como pagar?</h2>
+    <div class="pix-box">
+      <div style="position:relative;z-index:1">
+        <span class="pix-badge">Chave PIX · E-mail</span>
+        <p style="font-size:.78rem;opacity:.65;margin-bottom:.25rem">Titular</p>
+        <p style="font-size:1.05rem;font-weight:800;color:white;margin-bottom:.85rem">Geraldo Filho</p>
+        <div class="pix-key">geraldotfilho@gmail.com</div>
+        <div style="margin:1.2rem 0;height:1px;background:rgba(255,255,255,.1)"></div>
+        <p style="font-size:.82rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;opacity:.7;margin-bottom:.35rem">Sua parte agora (50%)</p>
+        <p style="font-size:.85rem;opacity:.65;line-height:1.55">Encontre o valor na tabela acima ☝️<br>Informe o <strong style="color:white">nome da família</strong> no comprovante.</p>
+        <div style="margin:1.2rem 0;height:1px;background:rgba(255,255,255,.1)"></div>
+        <p style="font-size:.8rem;opacity:.6;line-height:1.65">⚠️ O saldo restante será cobrado após confirmação dos valores finais.<br>Dúvidas? Fala com o Geraldo! 😊</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p style="font-size:1.4rem;margin-bottom:.5rem">🎪 🪗 ⚽ 🏆 🎉</p>
+  <p><strong>Arraiá &amp; Copa do Infantil 4B · 13 de Junho de 2026</strong></p>
+  <p>Salão de Festas · Ed. Mendo Sampaio · Praça do Monteiro, 2665 · Recife</p>
+  <p style="margin-top:.6rem;font-size:.73rem">Vai ser incrível — mal podemos esperar! 🤩</p>
+</footer>
+
+<script>
+  // 1. CONSTANTES E CONFIGURAÇÕES GERAIS
+  // Aqui você define os custos dos serviços e o peso de cada tipo de pessoa no buffet
+  const CONFIGURACAO_DA_FESTA = {
+    custos: {
+      aluguel: 450,       // Valor do Aluguel do Salão (Rateado por Família)
+      recreacao: 380,     // Valor do Tio Thiago (Rateado por Crianças)
+      trio: 500,          // Valor estimado do Trio Pé de Serra (Rateado por Família)
+      buffet: 1750        // Valor total do Buffet Jailson (Rateado por peso: adulto, criança, babá)
+    },
+    // Pesos do Buffet (1 = Paga cheio, 0.5 = Paga metade, 0 = Isento)
+    pesosBuffet: {
+      adulto: 1,      
+      crianca: 0.5,   
+      baba: 0.5,      
+      bebe: 0         
+    },
+    // Lista de todas as famílias e suas composições
+    familias: [
+      { nome: "Arthur e Letícia",       adultos: 2, criancas: 2, babas: 0, bebes: 0 },
+      { nome: "Benjamin",               adultos: 2, criancas: 1, babas: 0, bebes: 0 },
+      { nome: "Bia e Chico",            adultos: 0, criancas: 2, babas: 1, bebes: 0 }, // 0 adultos baseado no array original
+      { nome: "Clara e Dudu",           adultos: 1, criancas: 2, babas: 1, bebes: 0 },
+      { nome: "Diana e Laura",          adultos: 1, criancas: 2, babas: 0, bebes: 0 },
+      { nome: "Gabriel e Raul",         adultos: 2, criancas: 2, babas: 0, bebes: 0 },
+      { nome: "Helena C. e Vicente",    adultos: 2, criancas: 2, babas: 0, bebes: 0 },
+      { nome: "Helena Pitt",            adultos: 2, criancas: 1, babas: 0, bebes: 0 },
+      { nome: "Isadora",                adultos: 2, criancas: 1, babas: 1, bebes: 0 },
+      { nome: "Joaquim e Elis",         adultos: 2, criancas: 1, babas: 0, bebes: 1 },
+      { nome: "Lulu C. e Alice",        adultos: 2, criancas: 2, babas: 0, bebes: 0 },
+      { nome: "Lulu Menezes",           adultos: 2, criancas: 1, babas: 0, bebes: 0 },
+      { nome: "Melina Córdoba",         adultos: 2, criancas: 1, babas: 0, bebes: 0 },
+      { nome: "Melina Tuutti e Oliver", adultos: 2, criancas: 2, babas: 0, bebes: 0 },
+      { nome: "Miguel e Luis",          adultos: 2, criancas: 2, babas: 0, bebes: 0 },
+      { nome: "Nina",                   adultos: 2, criancas: 1, babas: 0, bebes: 0 },
+      { nome: "Otávio e Guilherme",     adultos: 2, criancas: 2, babas: 0, bebes: 0 },
+      { nome: "Théo e Naomi",           adultos: 2, criancas: 2, babas: 0, bebes: 0 }
+    ]
+  };
+
+  // ============================================================================
+  // LÓGICA INTERNA DE CÁLCULO (Não precisa alterar nada daqui para baixo)
+  // ============================================================================
+
+  // Função utilitária para formatar dinheiro (R$)
+  function formatarMoeda(valor) {
+    return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  }
+
+  // 1. Somatórios de Participantes
+  const qtdFamilias = CONFIGURACAO_DA_FESTA.familias.length;
+  let qtdAdultos = 0, qtdCriancas = 0, qtdBabas = 0, qtdBebes = 0;
+
+  CONFIGURACAO_DA_FESTA.familias.forEach(f => {
+    qtdAdultos += f.adultos;
+    qtdCriancas += f.criancas;
+    qtdBabas += f.babas;
+    qtdBebes += f.bebes;
+  });
+
+  // 2. Cálculos de Pesos e Valores Unitários
+  // Cálculo de total de "Unidades Pagantes" do Buffet
+  const totalUnidadesBuffet = (qtdAdultos * CONFIGURACAO_DA_FESTA.pesosBuffet.adulto) +
+                              (qtdCriancas * CONFIGURACAO_DA_FESTA.pesosBuffet.crianca) +
+                              (qtdBabas * CONFIGURACAO_DA_FESTA.pesosBuffet.baba) +
+                              (qtdBebes * CONFIGURACAO_DA_FESTA.pesosBuffet.bebe);
+
+  // Custos unitários rateados
+  const custoAluguelPorFamilia = CONFIGURACAO_DA_FESTA.custos.aluguel / qtdFamilias;
+  const custoTrioPorFamilia = CONFIGURACAO_DA_FESTA.custos.trio / qtdFamilias;
+  const custoRecreacaoPorCrianca = CONFIGURACAO_DA_FESTA.custos.recreacao / qtdCriancas;
+  const custoBuffetPorUnidade = CONFIGURACAO_DA_FESTA.custos.buffet / totalUnidadesBuffet;
+
+  const totalGeralServicos = Object.values(CONFIGURACAO_DA_FESTA.custos).reduce((a, b) => a + b, 0);
+
+  // ============================================================================
+  // RENDERIZAÇÃO DA INTERFACE (HTML Dinâmico)
+  // ============================================================================
+
+  // A. Renderizar Cards de Estatísticas
+  document.getElementById('container-estatisticas').innerHTML = `
+    <div class="scard"><span class="sico">🏠</span><span class="sval" style="color:#7c3aed">${qtdFamilias}</span><span class="slbl">Famílias</span></div>
+    <div class="scard"><span class="sico">👨‍👩‍👦</span><span class="sval" style="color:#ea580c">${qtdAdultos}</span><span class="slbl">Adultos</span></div>
+    <div class="scard"><span class="sico">🎒</span><span class="sval" style="color:#ca8a04">${qtdCriancas}</span><span class="slbl">Crianças</span></div>
+    <div class="scard"><span class="sico">👜</span><span class="sval" style="color:#0ea5e9">${qtdBabas}</span><span class="slbl">Babás</span></div>
+    <div class="scard"><span class="sico">🍼</span><span class="sval" style="color:#db2777">${qtdBebes}</span><span class="slbl">Bebê (Free)</span></div>
+  `;
+  document.getElementById('texto-estatisticas').innerHTML = `
+    Total estimado de participantes no rateio (sujeito a alterações).<br>
+    Lembrando que os pesos do buffet são diferentes para adultos (1) e crianças/babás (0.5).
+  `;
+
+  // B. Renderizar Tabela de Custos e Serviços
+  const htmlTabelaServicos = `
+    <tr>
+      <td><strong>🏠 Aluguel do Salão</strong><br><span style="font-size:.75rem;color:var(--light)">Ed. Mendo Sampaio</span></td>
+      <td style="text-align:right;font-weight:700">${formatarMoeda(CONFIGURACAO_DA_FESTA.custos.aluguel)}</td>
+      <td>÷ ${qtdFamilias} famílias</td>
+      <td style="text-align:right;font-weight:700">${formatarMoeda(custoAluguelPorFamilia)} / família</td>
+      <td><span class="bref">⚠️ Ref. 2025</span></td>
+    </tr>
+    <tr>
+      <td><strong>🎭 Recreação — Tio Thiago</strong><br><span style="font-size:.75rem;color:var(--light)">15h30 às 18h30</span></td>
+      <td style="text-align:right;font-weight:700">${formatarMoeda(CONFIGURACAO_DA_FESTA.custos.recreacao)}</td>
+      <td>÷ ${qtdCriancas} crianças</td>
+      <td style="text-align:right;font-weight:700">${formatarMoeda(custoRecreacaoPorCrianca)} / criança</td>
+      <td><span class="bref">⚠️ Ref. 2025</span></td>
+    </tr>
+    <tr>
+      <td><strong>🪗 Trio Pé de Serra</strong><br><span style="font-size:.75rem;color:var(--light)">Música raiz (substitui inflável)</span></td>
+      <td style="text-align:right;font-weight:700">${formatarMoeda(CONFIGURACAO_DA_FESTA.custos.trio)}</td>
+      <td>÷ ${qtdFamilias} famílias</td>
+      <td style="text-align:right;font-weight:700">${formatarMoeda(custoTrioPorFamilia)} / família</td>
+      <td><span class="bwarn">⚠️ Em Cotação</span></td>
+    </tr>
+    <tr>
+      <td><strong>🍔 Buffet Jailson</strong><br><span style="font-size:.75rem;color:var(--light)">15h às 19h</span></td>
+      <td style="text-align:right;font-weight:700">${formatarMoeda(CONFIGURACAO_DA_FESTA.custos.buffet)}</td>
+      <td>÷ ${totalUnidadesBuffet} un. de peso</td>
+      <td style="text-align:right;font-weight:700">${formatarMoeda(custoBuffetPorUnidade)} / peso 1</td>
+      <td><span class="bconf">✓ Confirmado</span></td>
+    </tr>
+    <tr class="tot">
+      <td><strong>TOTAL ESTIMADO</strong></td>
+      <td style="text-align:right;font-size:1.05rem"><strong>${formatarMoeda(totalGeralServicos)}</strong></td>
+      <td colspan="3" style="color:var(--mid);font-size:.78rem">⚠️ Aluguel, recreação e trio sujeitos a alteração final de orçamento.</td>
+    </tr>
+  `;
+  document.getElementById('tabela-servicos').innerHTML = htmlTabelaServicos;
+
+  // C. Renderizar Tabela de Rateio por Família
+  let htmlTabelaRateio = '';
+  let somaCotasCheias = 0;
+  let somaCotasMetade = 0;
+
+  CONFIGURACAO_DA_FESTA.familias.forEach(f => {
+    let cotaFamilia = 0;
+    
+    // 1. Custos Fixos da Família (Aluguel + Trio)
+    cotaFamilia += custoAluguelPorFamilia;
+    cotaFamilia += custoTrioPorFamilia;
+
+    // 2. Custos da Recreação (Apenas pelas Crianças)
+    cotaFamilia += (f.criancas * custoRecreacaoPorCrianca);
+
+    // 3. Custos do Buffet (Ponderado)
+    let pesoBuffetDaFamilia = (f.adultos * CONFIGURACAO_DA_FESTA.pesosBuffet.adulto) + 
+                              (f.criancas * CONFIGURACAO_DA_FESTA.pesosBuffet.crianca) + 
+                              (f.babas * CONFIGURACAO_DA_FESTA.pesosBuffet.baba) +
+                              (f.bebes * CONFIGURACAO_DA_FESTA.pesosBuffet.bebe);
+
+    cotaFamilia += (pesoBuffetDaFamilia * custoBuffetPorUnidade);
+
+    // Acumular totais para a linha final
+    somaCotasCheias += cotaFamilia;
+    somaCotasMetade += (cotaFamilia / 2);
+
+    // Gerar tags visuais de quem vai
+    let tagsHTML = '';
+    if(f.adultos > 0) tagsHTML += `<span class="tag ta">${f.adultos} adulto${f.adultos>1?'s':''}</span>`;
+    if(f.criancas > 0) tagsHTML += `<span class="tag tk">${f.criancas} criança${f.criancas>1?'s':''}</span>`;
+    if(f.babas > 0) tagsHTML += `<span class="tag tbb">${f.babas} babá${f.babas>1?'s':''}</span>`;
+    if(f.bebes > 0) tagsHTML += `<span class="tag tb">${f.bebes} bebê 🍼</span>`;
+
+    htmlTabelaRateio += `
+      <tr>
+        <td><strong>${f.nome}</strong></td>
+        <td>${tagsHTML}</td>
+        <td class="cval" style="text-align:right">${formatarMoeda(cotaFamilia)}</td>
+        <td style="text-align:right"><span class="apag">${formatarMoeda(cotaFamilia / 2)}</span></td>
+      </tr>
+    `;
+  });
+
+  // Adicionar linha de Totalização do Rateio
+  htmlTabelaRateio += `
+    <tr class="tot">
+      <td colspan="2"><strong>TOTAL · ${qtdFamilias} famílias</strong></td>
+      <td style="text-align:right;font-size:1rem"><strong>${formatarMoeda(somaCotasCheias)}</strong></td>
+      <td style="text-align:right;font-size:1rem"><strong style="color:var(--amber)">${formatarMoeda(somaCotasMetade)}</strong></td>
+    </tr>
+  `;
+
+  document.getElementById('tabela-rateio').innerHTML = htmlTabelaRateio;
+
+</script>
+</body>
+</html>
