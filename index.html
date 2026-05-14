@@ -148,6 +148,11 @@ tr.tot td { background:#fef9ec; font-weight:800; border-top:2px solid var(--gold
 .tk   { background:#fef9c3; color:#713f12; }
 .tb   { background:#fce7f3; color:#9d174d; }
 .tbb  { background:#f3f4f6; color:#374151; }
+.paid-ok { display:inline-flex; align-items:center; gap:4px; background:linear-gradient(120deg,#14532d,#166534);
+           color:white; font-size:.7rem; font-weight:900; padding:3px 10px; border-radius:99px;
+           letter-spacing:.04em; margin-left:.4rem; animation:pulsedot 2.8s ease-in-out infinite; }
+.row-paid td { background:#f0fdf4 !important; }
+.row-paid td:first-child::after { content:' ✅'; }
 
 /* ── CAIXA DO PIX ── */
 .pix-box { background:linear-gradient(140deg,#0f172a 0%,#1e3a5f 100%);
@@ -232,12 +237,12 @@ footer p + p { margin-top:.3rem; }
         <div class="card-body">
           <span class="pbadge" style="background:#fff7ed;color:#c2420f">☀️ 1ª Parte · Tarde</span>
           <p class="ptitle" style="color:#7c2d12">🎪 Festa Junina</p>
-          <p class="ptext">A nossa confraternização tradicional, com um espírito <strong>colaborativo e muito forró</strong> este ano!</p>
+          <p class="ptext">A nossa confraternização tradicional, com um espírito <strong>colaborativo e muito forró</strong> este ano — na raça e no coletivo! 💪</p>
           <ul class="blist">
-            <li>Recreação animada com o querido Tio Thiago</li>
-            <li>Trio Pé de Serra raiz para animar todo mundo 🪗</li>
-            <li>Buffet Jailson — salgados, doces &amp; bebidas</li>
+            <li>Recreação animada com a <strong>Cleone Festas</strong> 🎨</li>
+            <li>Buffet Jailson — salgados, doces, bebidas &amp; batata frita 🍟</li>
             <li>Decoração colaborativa, feita a muitas mãos!</li>
+            <li>Música: correndo atrás — <strong>aceitamos indicações!</strong> 🪗</li>
           </ul>
         </div>
       </div>
@@ -246,12 +251,13 @@ footer p + p { margin-top:.3rem; }
         <div class="card-body">
           <span class="pbadge" style="background:#f0fdf4;color:#15803d">⚽ 2ª Parte · A partir das 19h</span>
           <p class="ptitle" style="color:#14532d">🇧🇷 Brasil × Marrocos</p>
-          <p class="ptext">Continuamos juntos para torcer pelo Brasil na Copa do Mundo! De um jeito leve e prático:</p>
+          <p class="ptext">Continuamos juntos para torcer pelo Brasil na Copa do Mundo! Mas oxe, temos um problemão pra resolver:</p>
           <ul class="blist">
-            <li>O buffet encerra antes do jogo</li>
-            <li>Cada família pede o que quiser via <strong>iFood</strong></li>
-            <li>Ou traz pratinhos de casa</li>
-            <li>Conta individual, sem rateio nesta parte 🍕🏆</li>
+            <li>O salão <strong>não tem TV</strong> — Mariana tá vendo se tem parede pra projetar 🎥</li>
+            <li>Mirela talvez consiga um projetor — dedo cruzado! 🤞</li>
+            <li>Precisamos de um receptor de TV digital (não dá pra depender só de streaming)</li>
+            <li>Uma boa caixa JBL seria ótimo — quem tiver, salva a festa! 🔊</li>
+            <li>O buffet encerra antes do jogo — cada família pede iFood ou traz pratinho 🍕</li>
           </ul>
         </div>
       </div>
@@ -262,15 +268,77 @@ footer p + p { margin-top:.3rem; }
 
   <section class="sec fu d2">
     <p class="slabel">🎨 Espírito Colaborativo</p>
-    <h2 class="stitle">Decoração &amp; Música</h2>
-    <div class="callout ca">
-      <p class="ctitle" style="color:#92400e">🎨 Decoração — Traga a sua!</p>
-      <p class="ctext">Este ano a decoração é construída <strong>a muitas mãos</strong>! Cada família prepara em casa enfeites com tema junino e/ou Copa do Mundo e traz no dia. Chegando, montamos tudo juntos — crianças são muito bem-vindas para participar! 🌽🏆</p>
+    <h2 class="stitle">Como chegamos até aqui 😅</h2>
+
+    <div class="callout" style="background:#fff1f2;border-left:4px solid #e11d48;margin-bottom:1rem">
+      <p class="ctitle" style="color:#9f1239">💬 Um papo reto da galera da organização</p>
+      <p class="ctext">Eita, gente! A turma da organização — <strong>Geraldo, Joanna, Mariana, Mariane, Mirela e Taci</strong> — tá se esforçando de todo jeito pra fazer a melhor festa possível pra vocês. Mas sinceridade total: esse ano o tempo apertou demais e a gente chegou perto da data sem ter conseguido resolver tudo como devia. Acabou ficando muito em cima e muita coisa ainda tá em aberto. Por isso, de coração mesmo: <strong>contamos com a ajuda e a boa vontade de vocês todos</strong> pra que a nossa festa aconteça e seja boa pra geral. É na raça e no coletivo! 💪🧡</p>
     </div>
+
+    <div class="callout cg" style="margin-bottom:1.2rem">
+      <p class="ctitle" style="color:#14532d">✅ O que a gente conseguiu fechar</p>
+      <p class="ctext">Conseguimos acertar o essencial pra a festa acontecer: <strong>recreação, buffet e espaço</strong>. O resto tá na mão da turma — e a gente acredita em vocês! 🙌</p>
+    </div>
+
+    <div class="grid2" style="margin-bottom:1rem">
+      <div class="card">
+        <div class="card-accent" style="background:linear-gradient(90deg,#f59e0b,#fbbf24)"></div>
+        <div class="card-body">
+          <span class="pbadge" style="background:#fff7ed;color:#92400e">🍔 Buffet Confirmado</span>
+          <p class="ptitle" style="color:#7c2d12">Jailson — R$ 35/pessoa</p>
+          <p class="ptext">Optamos pela melhor opção custo-benefício. Segue o que tá incluso:</p>
+          <ul class="blist">
+            <li><strong>12 salgados + 6 doces</strong> por pessoa 🥟🍬</li>
+            <li>Refrigerante, água e suco polpa 🥤</li>
+            <li>Garçom e descartáveis inclusos ✔️</li>
+            <li>Mínimo de 50 pessoas (custo base: R$ 1.750)</li>
+            <li>Extra: 3 pacotes de batata frita (+R$ 120) 🍟</li>
+            <li>Sem taxa de deslocamento — que bom! 😄</li>
+            <li><strong>Total do buffet: R$ 1.870</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-accent" style="background:linear-gradient(90deg,#8b5cf6,#c084fc)"></div>
+        <div class="card-body">
+          <span class="pbadge" style="background:#f5f3ff;color:#6d28d9">🎨 Recreação Confirmada</span>
+          <p class="ptitle" style="color:#4c1d95">Cleone Festas — R$ 700</p>
+          <p class="ptext">O pessoal que fez a festa de Mel! Segue o pacote:</p>
+          <ul class="blist">
+            <li>📅 13/06 · ⏰ 15h30 às 18h30</li>
+            <li>Até 2 recreadores presentes</li>
+            <li>🎨 Resgate da infância: corrida de saco, quebra-cabeça</li>
+            <li>🫧 Brincadeiras leves e lúdicas</li>
+            <li>🎶 Danças e músicas infantis (som do cliente)</li>
+            <li>🏃 Circuito recreativo adaptado</li>
+            <li>🤼 Atividades esportivas</li>
+            <li>🎨 Pintura em lona gigante (cortesia!)</li>
+            <li style="color:#9f1239"><strong>Sem inflável</strong> — pra reduzir custos ✂️</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout ca" style="margin-bottom:1rem">
+      <p class="ctitle" style="color:#92400e">🪗 Música — Ajuda urgente, povo!</p>
+      <p class="ctext">Tamo correndo atrás de cotar um trio pé de serra ou banda que tenha disponibilidade pra data, mas ainda não conseguimos fechar nada, visse? <strong>Aceitamos indicações de coração!</strong> Essa é uma ajuda que definitivamente precisamos. A ideia é fazer uma <strong>enquete à parte</strong> pro grupo todo decidir se vale a pena investir nisso ou não. De qualquer forma, esperamos contar com os dons artísticos de <strong>João Victor</strong> e outros talentosos — ou simplesmente corajosos e desencabulados! — do grupo pra dar uma força na animação da festa. 🎶</p>
+    </div>
+
+    <div class="callout" style="background:#f0f9ff;border-left:4px solid #0284c7;margin-bottom:1rem">
+      <p class="ctitle" style="color:#0c4a6e">📺 O problemão do jogo — precisamos de ajuda!</p>
+      <p class="ctext">Oxe, o salão não tem TV! Aí fica difícil, né? Mariana tá vendo se tem alguma parede onde possamos projetar. Mirela talvez consiga um projetor. Mas ainda precisaríamos correr atrás de um <strong>receptor de TV digital</strong> pra não depender de streaming — porque sabe como é, né, na hora H a internet resolve dar problema. Também precisaremos de uma <strong>boa caixa JBL</strong>, tanto pra assistir o jogo quanto pra música. Quem puder ajudar com algum desses itens, se manifeste! 🙏</p>
+    </div>
+
+    <div class="callout ca" style="margin-bottom:1rem">
+      <p class="ctitle" style="color:#92400e">🎨 Decoração — cada um traz a sua!</p>
+      <p class="ctext">A decoração é construída <strong>a muitas mãos</strong>! Cada família prepara em casa enfeites com tema junino e/ou Copa do Mundo e traz no dia. Chegando, montamos tudo juntos — crianças são muito bem-vindas pra participar! 🌽🏆</p>
+    </div>
+
     <div class="callout cg">
-      <p class="ctitle" style="color:#14532d">🪗 Música — Trio Pé de Serra & Show do Intervalo!</p>
-      <p class="ctext">Mudamos a lógica da diversão: substituímos o brinquedo inflável por um autêntico <strong>Trio Pé de Serra</strong>! Assim garantimos o clima junino raiz e a animação tanto das crianças quanto dos adultos. Mas não fica com ciúmes não, <strong>João Victor</strong>! Traz tua sanfona e faz teu "Show do Intervalo" do jogo do Brasil! 🎶🏆</p>
+      <p class="ctitle" style="color:#14532d">🍢 Comidas Típicas — o afeto junino de cada um</p>
+      <p class="ctext">As comidas típicas de São João podem entrar no mesmo esquema da decoração: colaborativo! Quem tiver aquela comida afetiva junina e puder levar, a gente se organiza pra dividir os custos. Canjica, pamonha, pé de moleque, queijo coalho... cada um com o que tiver de melhor! Vamos resolver isso à parte com o grupo? 🌽🥜</p>
     </div>
+
   </section>
 
   <hr class="div">
@@ -290,20 +358,20 @@ footer p + p { margin-top:.3rem; }
           <div class="tl-item">
             <div class="tl-dot" style="--pd:.4s"></div>
             <p class="tl-time">15h30</p>
-            <p class="tl-name">🎭 Recreação — Tio Thiago</p>
-            <p class="tl-desc">Tio Thiago assume o comando com brincadeiras animadas para as crianças até as 18h30.</p>
+            <p class="tl-name">🎭 Recreação — Cleone Festas</p>
+            <p class="tl-desc">A Cleone Festas assume o comando com brincadeiras lúdicas e interativas pras crianças até as 18h30. Vai ser uma bagunça boa!</p>
           </div>
           <div class="tl-item">
             <div class="tl-dot" style="--pd:.8s"></div>
             <p class="tl-time">16h30</p>
-            <p class="tl-name">🪗 Trio Pé de Serra Raiz</p>
-            <p class="tl-desc">O trio começa a tocar o autêntico forró pra animar os adultos e colocar a criançada pra dançar!</p>
+            <p class="tl-name">🪗 Música — Em Definição!</p>
+            <p class="tl-desc">Estamos cotando trio pé de serra ou banda. Enquanto não fechamos, contamos com João Victor e outros corajosos pra animar o povo! Tá querendo indicar alguém? Se manifesta! 🎶</p>
           </div>
           <div class="tl-item">
             <div class="tl-dot" style="--pd:1.2s"></div>
             <p class="tl-time">18h30</p>
-            <p class="tl-name">🛑 Fim da Recreação & Trio</p>
-            <p class="tl-desc">Hora de agradecer ao Tio Thiago e ao Trio Pé de Serra e começar a focar no jogo!</p>
+            <p class="tl-name">🛑 Fim da Recreação & Agradecimentos</p>
+            <p class="tl-desc">Hora de agradecer à turma da Cleone Festas e respirar antes do jogo!</p>
           </div>
           <div class="tl-item">
             <div class="tl-dot" style="--pd:1.6s"></div>
@@ -315,7 +383,7 @@ footer p + p { margin-top:.3rem; }
             <div class="tl-dot g"></div>
             <p class="tl-time" style="color:var(--green)">19h00 ⚽</p>
             <p class="tl-name" style="color:#14532d">🇧🇷 Brasil × Marrocos + Show do Intervalo</p>
-            <p class="tl-desc">O grande momento! Conta individual. E no intervalo do jogo, a música fica por conta de <strong>João Victor</strong> e quem mais puder emprestar seus talentos musicais! <strong>VAI, BRASIL! 🏆🟡🟢</strong></p>
+            <p class="tl-desc">O grande momento! Conta individual — cada família pede iFood ou traz pratinho. A gente ainda tá resolvendo a questão da TV/projetor, mas vai dar certo! E no intervalo, a música fica por conta de <strong>João Victor</strong> e quem mais tiver coragem! <strong>VAI, BRASIL! 🏆🟡🟢</strong></p>
           </div>
         </div>
       </div>
@@ -366,7 +434,8 @@ footer p + p { margin-top:.3rem; }
       <ul>
         <li><strong>Buffet:</strong> Adultos pagam peso 1 (cheio). Crianças e Babás pagam peso 0,5 (meio). Bebês não pagam.</li>
         <li><strong>Recreação:</strong> Rateada exclusivamente entre o total de crianças maiores.</li>
-        <li><strong>Salão & Trio Pé de Serra:</strong> Rateados igualmente por Família.</li>
+        <li><strong>Salão:</strong> Rateado igualmente por Família.</li>
+        <li><strong>Música/Trio:</strong> 🗳️ Valor a ser definido em enquete — por enquanto está zerado no cálculo.</li>
       </ul>
       A 2ª parte (jogo da Copa) é de consumo individual por família — sem rateio coletivo.
     </div>
@@ -379,7 +448,7 @@ footer p + p { margin-top:.3rem; }
     <h2 class="stitle">Quanto é a sua parte?</h2>
     <div class="callout cr" style="margin-bottom:1.2rem">
       <p class="ctitle" style="color:#9f1239">🚨 Pagamento antecipado de 50% </p>
-      <p class="ctext">Falta menos de 1 mês para o evento! Para fecharmos os fornecedores, pedimos que cada família confirme sua participação, os quantitativos de adultos e crianças e envie <strong>50% da cota estimada</strong> o quanto antes. O valor restante será cobrado após confirmarmos os custos finais do salão, da recreação e do trio.</p>
+      <p class="ctext">Eita, gente, o prazo tá chegando! Já precisamos pagar metade do valor do <strong>buffet e da recreação</strong> pra garantir nossa vaga com os fornecedores. Por isso, pedimos que cada família confirme sua participação, informe os quantitativos de adultos e crianças e envie <strong>50% da cota estimada</strong> o quanto antes. <br><br>⚠️ <em>O valor final poderá ser alterado caso mude a quantidade de participantes — tudo será acertado certinho na parcela final. Ninguém paga a mais nem a menos do que deve!</em></p>
     </div>
     <div class="tw">
       <table class="rtable">
@@ -388,15 +457,15 @@ footer p + p { margin-top:.3rem; }
             <th>Família</th>
             <th>Composição (Cálculo)</th>
             <th class="r">Cota Estimada</th>
-            <th class="r" style="background:var(--gold);color:white">⚡ 50% Agora</th>
+            <th class="r" style="background:var(--gold);color:white">⚡ 50% Agora / Situação</th>
           </tr>
         </thead>
         <tbody id="tabela-rateio"></tbody>
       </table>
     </div>
     <div class="nota">
-      <strong>📌 Nota:</strong> Os itens com aviso ⚠️ são estimativas.
-      Uma versão atualizada desta página será compartilhada com os custos confirmados e a cobrança do saldo restante.
+      <strong>📌 Nota:</strong> O valor da música/trio está zerado por enquanto (🗳️ a ser definido em enquete).
+      Uma versão atualizada desta página será compartilhada com os custos confirmados e a cobrança do saldo restante. O valor final pode mudar conforme a quantidade de participantes.
     </div>
   </section>
 
@@ -434,10 +503,10 @@ footer p + p { margin-top:.3rem; }
   // Aqui você define os custos dos serviços e o peso de cada tipo de pessoa no buffet
   const CONFIGURACAO_DA_FESTA = {
     custos: {
-      aluguel: 450,       // Valor do Aluguel do Salão (Rateado por Família)
-      recreacao: 380,     // Valor do Tio Thiago (Rateado por Crianças)
-      trio: 500,          // Valor estimado do Trio Pé de Serra (Rateado por Família)
-      buffet: 1750        // Valor total do Buffet Jailson (Rateado por peso: adulto, criança, babá)
+      aluguel: 400,       // Valor do Aluguel do Salão (Rateado por Família)
+      recreacao: 700,     // Valor da Cleone Festas (Rateado por Crianças)
+      trio: 0,            // Valor do trio/banda — A SER DEFINIDO EM ENQUETE
+      buffet: 1870        // Valor total do Buffet Jailson (35×50=1750 + 120 batata frita)
     },
     // Pesos do Buffet (1 = Paga cheio, 0.5 = Paga metade, 0 = Isento)
     pesosBuffet: {
@@ -448,24 +517,24 @@ footer p + p { margin-top:.3rem; }
     },
     // Lista de todas as famílias e suas composições
     familias: [
-      { nome: "Arthur e Letícia",       adultos: 2, criancas: 2, babas: 0, bebes: 0 },
-      { nome: "Benjamim",               adultos: 2, criancas: 1, babas: 0, bebes: 0 },
-      { nome: "Bia e Chico",            adultos: 0, criancas: 2, babas: 1, bebes: 0 }, // 0 adultos baseado no array original
-      { nome: "Clara e Dudu",           adultos: 1, criancas: 2, babas: 1, bebes: 0 },
-      { nome: "Diana e Laura",          adultos: 1, criancas: 2, babas: 0, bebes: 0 },
-      { nome: "Gabriel e Raul",         adultos: 2, criancas: 2, babas: 0, bebes: 0 },
-      { nome: "Helena C. e Vicente",    adultos: 2, criancas: 2, babas: 0, bebes: 0 },
-      { nome: "Helena Pitt",            adultos: 2, criancas: 1, babas: 0, bebes: 0 },
-      { nome: "Isadora",                adultos: 2, criancas: 1, babas: 1, bebes: 0 },
-      { nome: "Joaquim e Elis",         adultos: 2, criancas: 1, babas: 0, bebes: 1 },
-      { nome: "Lulu C. e Alice",        adultos: 2, criancas: 2, babas: 0, bebes: 0 },
-      { nome: "Lulu Menezes",           adultos: 2, criancas: 1, babas: 0, bebes: 0 },
-      { nome: "Melina Córdoba",         adultos: 2, criancas: 1, babas: 0, bebes: 0 },
-      { nome: "Melina Tuutti e Oliver", adultos: 2, criancas: 2, babas: 0, bebes: 0 },
-      { nome: "Miguel e Luis",          adultos: 2, criancas: 2, babas: 0, bebes: 0 },
-      { nome: "Nina",                   adultos: 2, criancas: 1, babas: 0, bebes: 0 },
-      { nome: "Otávio e Guilherme",     adultos: 2, criancas: 2, babas: 0, bebes: 0 },
-      { nome: "Théo e Naomi",           adultos: 2, criancas: 2, babas: 0, bebes: 0 }
+      { nome: "Arthur e Letícia",       adultos: 2, criancas: 2, babas: 0, bebes: 0, pagou50: false },
+      { nome: "Benjamim",               adultos: 2, criancas: 1, babas: 0, bebes: 0, pagou50: true  },
+      { nome: "Bia e Chico",            adultos: 0, criancas: 2, babas: 1, bebes: 0, pagou50: false }, // 0 adultos baseado no array original
+      { nome: "Clara e Dudu",           adultos: 1, criancas: 2, babas: 1, bebes: 0, pagou50: false },
+      { nome: "Diana e Laura",          adultos: 1, criancas: 2, babas: 0, bebes: 0, pagou50: false },
+      { nome: "Gabriel e Raul",         adultos: 2, criancas: 2, babas: 0, bebes: 0, pagou50: false },
+      { nome: "Helena C. e Vicente",    adultos: 2, criancas: 2, babas: 0, bebes: 0, pagou50: false },
+      { nome: "Helena Pitt",            adultos: 2, criancas: 1, babas: 0, bebes: 0, pagou50: false },
+      { nome: "Isadora Costa",          adultos: 2, criancas: 1, babas: 1, bebes: 0, pagou50: true  },
+      { nome: "Joaquim e Elis",         adultos: 2, criancas: 1, babas: 0, bebes: 1, pagou50: false },
+      { nome: "Lulu C. e Alice",        adultos: 2, criancas: 2, babas: 0, bebes: 0, pagou50: false },
+      { nome: "Lulu Menezes",           adultos: 2, criancas: 1, babas: 0, bebes: 0, pagou50: false },
+      { nome: "Melina Córdoba",         adultos: 2, criancas: 1, babas: 0, bebes: 0, pagou50: false },
+      { nome: "Melina Tuutti e Oliver", adultos: 2, criancas: 2, babas: 0, bebes: 0, pagou50: true  },
+      { nome: "Miguel e Luis",          adultos: 2, criancas: 2, babas: 0, bebes: 0, pagou50: false },
+      { nome: "Nina",                   adultos: 2, criancas: 1, babas: 0, bebes: 0, pagou50: false },
+      { nome: "Otávio e Guilherme",     adultos: 2, criancas: 2, babas: 0, bebes: 0, pagou50: false },
+      { nome: "Théo e Naomi",           adultos: 2, criancas: 2, babas: 0, bebes: 0, pagou50: false }
     ]
   };
 
@@ -528,24 +597,24 @@ footer p + p { margin-top:.3rem; }
       <td style="text-align:right;font-weight:700">${formatarMoeda(CONFIGURACAO_DA_FESTA.custos.aluguel)}</td>
       <td>÷ ${qtdFamilias} famílias</td>
       <td style="text-align:right;font-weight:700">${formatarMoeda(custoAluguelPorFamilia)} / família</td>
-      <td><span class="bref">⚠️ Ref. 2025</span></td>
+      <td><span class="bconf">✓ Confirmado</span></td>
     </tr>
     <tr>
-      <td><strong>🎭 Recreação — Tio Thiago</strong><br><span style="font-size:.75rem;color:var(--light)">15h30 às 18h30</span></td>
+      <td><strong>🎭 Recreação — Cleone Festas</strong><br><span style="font-size:.75rem;color:var(--light)">15h30 às 18h30</span></td>
       <td style="text-align:right;font-weight:700">${formatarMoeda(CONFIGURACAO_DA_FESTA.custos.recreacao)}</td>
       <td>÷ ${qtdCriancas} crianças</td>
       <td style="text-align:right;font-weight:700">${formatarMoeda(custoRecreacaoPorCrianca)} / criança</td>
-      <td><span class="bref">⚠️ Ref. 2025</span></td>
+      <td><span class="bconf">✓ Confirmado</span></td>
     </tr>
     <tr>
-      <td><strong>🪗 Trio Pé de Serra</strong><br><span style="font-size:.75rem;color:var(--light)">Música raiz (substitui inflável)</span></td>
+      <td><strong>🪗 Trio / Banda</strong><br><span style="font-size:.75rem;color:var(--light)">Aguardando enquete do grupo</span></td>
       <td style="text-align:right;font-weight:700">${formatarMoeda(CONFIGURACAO_DA_FESTA.custos.trio)}</td>
       <td>÷ ${qtdFamilias} famílias</td>
       <td style="text-align:right;font-weight:700">${formatarMoeda(custoTrioPorFamilia)} / família</td>
-      <td><span class="bwarn">⚠️ Em Cotação</span></td>
+      <td><span class="bwarn">🗳️ Em Enquete</span></td>
     </tr>
     <tr>
-      <td><strong>🍔 Buffet Jailson</strong><br><span style="font-size:.75rem;color:var(--light)">15h às 19h</span></td>
+      <td><strong>🍔 Buffet Jailson</strong><br><span style="font-size:.75rem;color:var(--light)">R$35/pessoa · mín. 50 + batata frita</span></td>
       <td style="text-align:right;font-weight:700">${formatarMoeda(CONFIGURACAO_DA_FESTA.custos.buffet)}</td>
       <td>÷ ${totalUnidadesBuffet} un. de peso</td>
       <td style="text-align:right;font-weight:700">${formatarMoeda(custoBuffetPorUnidade)} / peso 1</td>
@@ -554,7 +623,7 @@ footer p + p { margin-top:.3rem; }
     <tr class="tot">
       <td><strong>TOTAL ESTIMADO</strong></td>
       <td style="text-align:right;font-size:1.05rem"><strong>${formatarMoeda(totalGeralServicos)}</strong></td>
-      <td colspan="3" style="color:var(--mid);font-size:.78rem">⚠️ Aluguel, recreação e trio sujeitos a alteração final de orçamento.</td>
+      <td colspan="3" style="color:var(--mid);font-size:.78rem">🗳️ Música/trio ainda em aberto — valor zerado por enquanto, a ser definido em enquete.</td>
     </tr>
   `;
   document.getElementById('tabela-servicos').innerHTML = htmlTabelaServicos;
@@ -594,11 +663,11 @@ footer p + p { margin-top:.3rem; }
     if(f.bebes > 0) tagsHTML += `<span class="tag tb">${f.bebes} bebê 🍼</span>`;
 
     htmlTabelaRateio += `
-      <tr>
-        <td><strong>${f.nome}</strong></td>
+      <tr class="${f.pagou50 ? 'row-paid' : ''}">
+        <td><strong>${f.nome}</strong>${f.pagou50 ? ' <span class="paid-ok">✓ 50% PAGO</span>' : ''}</td>
         <td>${tagsHTML}</td>
         <td class="cval" style="text-align:right">${formatarMoeda(cotaFamilia)}</td>
-        <td style="text-align:right"><span class="apag">${formatarMoeda(cotaFamilia / 2)}</span></td>
+        <td style="text-align:right">${f.pagou50 ? '<span style="display:inline-flex;align-items:center;gap:4px;background:#dcfce7;color:#15803d;font-size:.82rem;font-weight:800;padding:3px 10px;border-radius:6px;">✅ Pago!</span>' : '<span class="apag">' + formatarMoeda(cotaFamilia / 2) + '</span>'}</td>
       </tr>
     `;
   });
