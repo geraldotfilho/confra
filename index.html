@@ -153,16 +153,23 @@ tr.tot td { background:#fef9ec; font-weight:800; border-top:2px solid var(--gold
            letter-spacing:.04em; margin-left:.4rem; animation:pulsedot 2.8s ease-in-out infinite; }
 .row-paid td { background:#f0fdf4 !important; }
 .row-paid td:first-child::after { content:' ✅'; }
-/* Saldo */
-.saldo-deve    { display:inline-block; font-weight:900; color:white; background:#dc2626;
-                 padding:3px 10px; border-radius:6px; font-size:.85rem; }
-.saldo-receber { display:inline-block; font-weight:900; color:white; background:#15803d;
-                 padding:3px 10px; border-radius:6px; font-size:.85rem; }
-.saldo-ok      { display:inline-block; font-weight:900; color:#14532d; background:#bbf7d0;
-                 padding:3px 10px; border-radius:6px; font-size:.85rem; }
-.pagou-val     { display:inline-block; font-weight:800; color:#1e40af; background:#dbeafe;
-                 padding:3px 10px; border-radius:6px; font-size:.85rem; }
-.pagou-zero    { font-size:.8rem; color:var(--light); font-style:italic; }
+/* Badges de saldo e pagamento */
+.saldo-deve     { display:inline-block; font-weight:900; color:white; background:#dc2626; padding:3px 9px; border-radius:6px; font-size:.82rem; }
+.saldo-receber  { display:inline-block; font-weight:900; color:white; background:#15803d; padding:3px 9px; border-radius:6px; font-size:.82rem; }
+.saldo-ok       { display:inline-block; font-weight:900; color:#14532d; background:#bbf7d0; padding:3px 9px; border-radius:6px; font-size:.82rem; }
+.saldo-virtual  { display:inline-block; font-weight:800; color:#6b21a8; background:#f3e8ff; padding:3px 9px; border-radius:6px; font-size:.82rem; }
+.pix-val        { display:inline-block; font-weight:800; color:#1e40af; background:#dbeafe; padding:3px 9px; border-radius:6px; font-size:.82rem; }
+.pix-zero       { font-size:.79rem; color:var(--light); font-style:italic; }
+.adiantou-val   { display:inline-block; font-weight:800; color:#92400e; background:#fef3c7; padding:3px 9px; border-radius:6px; font-size:.82rem; }
+.devolvido-sub  { display:block; font-size:.7rem; color:#15803d; margin-top:3px; }
+.falta-sub      { display:block; font-size:.7rem; color:#dc2626; margin-top:1px; }
+/* Painel financeiro */
+.fin-grid { display:grid; grid-template-columns:1fr 1fr; gap:.8rem; margin-top:1rem; }
+@media(min-width:600px){ .fin-grid { grid-template-columns:repeat(4,1fr); } }
+.fin-card { background:white; border-radius:.9rem; padding:1rem; text-align:center; box-shadow:var(--shadow); }
+.fin-ico  { font-size:1.4rem; display:block; margin-bottom:.25rem; }
+.fin-val  { font-weight:900; font-size:1.35rem; line-height:1.1; display:block; }
+.fin-lbl  { font-size:.63rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--light); display:block; margin-top:.2rem; }
 
 /* ── CAIXA DO PIX ── */
 .pix-box { background:linear-gradient(140deg,#0f172a 0%,#1e3a5f 100%);
@@ -465,10 +472,11 @@ footer p + p { margin-top:.3rem; }
         <thead>
           <tr>
             <th>Família</th>
-            <th>Composição (Cálculo)</th>
-            <th class="r">Cota Estimada</th>
-            <th class="r" style="background:#1e40af;color:white">💰 Já Pagou</th>
-            <th class="r" style="background:#374151;color:white">📊 Saldo Estimado</th>
+            <th>Composição</th>
+            <th class="r">Cota Est.</th>
+            <th class="r" style="background:#1e40af;color:white">💰 PIX → Geraldo</th>
+            <th class="r" style="background:#92400e;color:white">🏦 Adiantou</th>
+            <th class="r" style="background:#374151;color:white">📊 Saldo</th>
           </tr>
         </thead>
         <tbody id="tabela-rateio"></tbody>
@@ -478,7 +486,7 @@ footer p + p { margin-top:.3rem; }
       <strong>📌 Nota:</strong> O valor da música/trio está zerado por enquanto (🗳️ a ser definido em enquete).
       Uma versão atualizada desta página será compartilhada com os custos confirmados e a cobrança do saldo restante. O valor final pode mudar conforme a quantidade de participantes.
     </div>
-    <div id="painel-financeiro"></div>
+    <div id="painel-financeiro" style="margin-top:1.2rem"></div>
   </section>
 
   <hr class="div">
@@ -528,26 +536,30 @@ footer p + p { margin-top:.3rem; }
       bebe: 0         
     },
     // Lista de todas as famílias e suas composições
+    // pagouPix          = transferiu pro PIX do Geraldo
+    // adiantou          = pagou direto a fornecedor pelo grupo
+    // geraldoTransferiu = Geraldo já devolveu para esta família via PIX
+    // geraldo: true     = família do Geraldo (saldo sempre forçado = 0, não paga pra si mesmo)
     familias: [
-      { nome: "Arthur e Letícia",       adultos: 2, criancas: 2, babas: 0, bebes: 0, pagou: 0     },
-      { nome: "Benjamim",               adultos: 2, criancas: 1, babas: 0, bebes: 0, pagou: 0     },
-      { nome: "Bia e Chico",            adultos: 0, criancas: 2, babas: 1, bebes: 0, pagou: 0     }, // 0 adultos baseado no array original
-      { nome: "Clara e Dudu",           adultos: 1, criancas: 2, babas: 1, bebes: 0, pagou: 0     },
-      { nome: "Diana e Laura",          adultos: 1, criancas: 2, babas: 0, bebes: 0, pagou: 0     },
-      { nome: "Gabriel e Raul",         adultos: 2, criancas: 2, babas: 0, bebes: 0, pagou: 0     },
-      { nome: "Helena C. e Vicente",    adultos: 2, criancas: 2, babas: 0, bebes: 0, pagou: 0     },
-      { nome: "Helena Pitt",            adultos: 2, criancas: 1, babas: 0, bebes: 0, pagou: 0     },
-      { nome: "Isadora Costa",          adultos: 2, criancas: 1, babas: 1, bebes: 0, pagou: 935   },
-      { nome: "Joaquim e Elis",         adultos: 2, criancas: 1, babas: 0, bebes: 1, pagou: 0     },
-      { nome: "João Felipe",            adultos: 2, criancas: 1, babas: 0, bebes: 1, pagou: 0     },
-      { nome: "Lulu C. e Alice",        adultos: 2, criancas: 2, babas: 0, bebes: 0, pagou: 0     },
-      { nome: "Lulu Menezes",           adultos: 2, criancas: 1, babas: 0, bebes: 0, pagou: 71.88 },
-      { nome: "Melina Córdoba",         adultos: 2, criancas: 1, babas: 0, bebes: 0, pagou: 0     },
-      { nome: "Melina Tuutti e Oliver", adultos: 2, criancas: 2, babas: 0, bebes: 0, pagou: 350   },
-      { nome: "Miguel e Luis",          adultos: 2, criancas: 2, babas: 0, bebes: 0, pagou: 0     },
-      { nome: "Nina",                   adultos: 2, criancas: 1, babas: 0, bebes: 0, pagou: 0     },
-      { nome: "Otávio e Guilherme",     adultos: 2, criancas: 2, babas: 0, bebes: 0, pagou: 400   },
-      { nome: "Théo e Naomi",           adultos: 2, criancas: 2, babas: 0, bebes: 0, pagou: 0     }
+      { nome: "Arthur e Letícia",       adultos: 2, criancas: 2, babas: 0, bebes: 0, pagouPix: 0,   adiantou: 0,   geraldoTransferiu: 0 },
+      { nome: "Benjamim",               adultos: 2, criancas: 1, babas: 0, bebes: 0, pagouPix: 0,   adiantou: 0,   geraldoTransferiu: 0, geraldo: true },
+      { nome: "Bia e Chico",            adultos: 0, criancas: 2, babas: 1, bebes: 0, pagouPix: 0,   adiantou: 0,   geraldoTransferiu: 0 },
+      { nome: "Clara e Dudu",           adultos: 2, criancas: 3, babas: 1, bebes: 0, pagouPix: 0,   adiantou: 0,   geraldoTransferiu: 0 },
+      { nome: "Diana e Laura",          adultos: 1, criancas: 2, babas: 0, bebes: 0, pagouPix: 74.21,   adiantou: 0,   geraldoTransferiu: 0 },
+      { nome: "Gabriel e Raul",         adultos: 2, criancas: 2, babas: 0, bebes: 0, pagouPix: 0,   adiantou: 0,   geraldoTransferiu: 0 },
+      { nome: "Helena C. e Vicente",    adultos: 2, criancas: 2, babas: 0, bebes: 0, pagouPix: 0,   adiantou: 0,   geraldoTransferiu: 0 },
+      { nome: "Helena Pitt",            adultos: 2, criancas: 1, babas: 0, bebes: 0, pagouPix: 0,   adiantou: 0,   geraldoTransferiu: 0 },
+      { nome: "Isadora Costa",          adultos: 2, criancas: 1, babas: 1, bebes: 0, pagouPix: 0,   adiantou: 935, geraldoTransferiu: 0 }, // Joanna
+      { nome: "Joaquim e Elis",         adultos: 2, criancas: 1, babas: 0, bebes: 1, pagouPix: 0,   adiantou: 0,   geraldoTransferiu: 0 },
+      { nome: "João Felipe",            adultos: 2, criancas: 1, babas: 0, bebes: 1, pagouPix: 0,   adiantou: 0,   geraldoTransferiu: 0 },
+      { nome: "Lulu C. e Alice",        adultos: 2, criancas: 2, babas: 0, bebes: 0, pagouPix: 0,   adiantou: 0,   geraldoTransferiu: 0 },
+      { nome: "Lulu Menezes",           adultos: 2, criancas: 1, babas: 0, bebes: 0, pagouPix: 71.88,   adiantou: 0,   geraldoTransferiu: 0 },
+      { nome: "Melina Córdoba",         adultos: 2, criancas: 1, babas: 0, bebes: 0, pagouPix: 0,   adiantou: 0,   geraldoTransferiu: 0 },
+      { nome: "Melina Tuutti e Oliver", adultos: 2, criancas: 2, babas: 0, bebes: 0, pagouPix: 0,   adiantou: 350, geraldoTransferiu: 0 },
+      { nome: "Miguel e Luis",          adultos: 2, criancas: 2, babas: 0, bebes: 0, pagouPix: 0,   adiantou: 0,   geraldoTransferiu: 0 },
+      { nome: "Nina",                   adultos: 2, criancas: 1, babas: 0, bebes: 0, pagouPix: 0,   adiantou: 0,   geraldoTransferiu: 0 },
+      { nome: "Otávio e Guilherme",     adultos: 2, criancas: 2, babas: 0, bebes: 0, pagouPix: 0,   adiantou: 400, geraldoTransferiu: 0 },
+      { nome: "Théo e Naomi",           adultos: 2, criancas: 2, babas: 0, bebes: 0, pagouPix: 0,   adiantou: 0,   geraldoTransferiu: 0 }
     ]
   };
 
@@ -643,108 +655,197 @@ footer p + p { margin-top:.3rem; }
 
   // C. Renderizar Tabela de Rateio por Família
   let htmlTabelaRateio = '';
-  let somaCotasCheias = 0;
-  let somaTotalPago = 0;
+  let somaCotasCheias  = 0;
+  let somaPixReal      = 0; // PIX recebido de outras famílias (exclui virtual do Geraldo)
+  let somaPixVirtual   = 0; // cota virtual do Geraldo
+  let somaAdiantou     = 0; // total adiantado a fornecedores por todas as famílias
+  let somaAinda        = 0; // total ainda a receber (saldos positivos)
+  let somaADevolver    = 0; // total a devolver a quem adiantou (|saldos negativos|)
+  let somaJaDevolvido  = 0; // total que Geraldo já transferiu de volta
 
   CONFIGURACAO_DA_FESTA.familias.forEach(f => {
     let cotaFamilia = 0;
-    
-    // 1. Custos Fixos da Família (Aluguel + Trio)
+
+    // 1. Custos Fixos (Aluguel + Trio)
     cotaFamilia += custoAluguelPorFamilia;
     cotaFamilia += custoTrioPorFamilia;
 
-    // 2. Custos da Recreação (Apenas pelas Crianças)
+    // 2. Recreação (só crianças)
     cotaFamilia += (f.criancas * custoRecreacaoPorCrianca);
 
-    // 3. Custos do Buffet (Ponderado)
-    let pesoBuffetDaFamilia = (f.adultos * CONFIGURACAO_DA_FESTA.pesosBuffet.adulto) + 
-                              (f.criancas * CONFIGURACAO_DA_FESTA.pesosBuffet.crianca) + 
-                              (f.babas * CONFIGURACAO_DA_FESTA.pesosBuffet.baba) +
-                              (f.bebes * CONFIGURACAO_DA_FESTA.pesosBuffet.bebe);
-    cotaFamilia += (pesoBuffetDaFamilia * custoBuffetPorUnidade);
+    // 3. Buffet (ponderado)
+    const pesoBuffet = (f.adultos  * CONFIGURACAO_DA_FESTA.pesosBuffet.adulto)
+                     + (f.criancas * CONFIGURACAO_DA_FESTA.pesosBuffet.crianca)
+                     + (f.babas    * CONFIGURACAO_DA_FESTA.pesosBuffet.baba)
+                     + (f.bebes   * CONFIGURACAO_DA_FESTA.pesosBuffet.bebe);
+    cotaFamilia += (pesoBuffet * custoBuffetPorUnidade);
 
-    const saldo = cotaFamilia - f.pagou; // positivo = ainda deve | negativo = a receber de volta
+    // PIX efetivo: para o Geraldo, forçamos = cota − adiantou (ele não paga pra si mesmo)
+    const pixEfetivo = f.geraldo
+      ? Math.max(0, cotaFamilia - f.adiantou)
+      : f.pagouPix;
 
-    // Acumular totais
+    const totalContribuiu = pixEfetivo + f.adiantou;
+    const saldo = cotaFamilia - totalContribuiu;
+    // saldo > 0  → ainda deve
+    // saldo < 0  → adiantou mais que a cota, Geraldo deve devolver |saldo|
+    // saldo = 0  → quitado
+
+    const aindaDevolver = Math.max(0, -saldo - f.geraldoTransferiu);
+
+    // Acumular totais globais
     somaCotasCheias += cotaFamilia;
-    somaTotalPago   += f.pagou;
+    somaAdiantou    += f.adiantou;
+    somaJaDevolvido += f.geraldoTransferiu;
+    if (f.geraldo) {
+      somaPixVirtual += pixEfetivo;
+    } else {
+      somaPixReal += f.pagouPix;
+    }
+    if (saldo > 0.01)  somaAinda    += saldo;
+    if (saldo < -0.01) somaADevolver += Math.abs(saldo);
 
-    // Tags visuais de composição
+    // ── Tags de composição ──
     let tagsHTML = '';
-    if(f.adultos > 0) tagsHTML += `<span class="tag ta">${f.adultos} adulto${f.adultos>1?'s':''}</span>`;
+    if(f.adultos  > 0) tagsHTML += `<span class="tag ta">${f.adultos} adulto${f.adultos>1?'s':''}</span>`;
     if(f.criancas > 0) tagsHTML += `<span class="tag tk">${f.criancas} criança${f.criancas>1?'s':''}</span>`;
-    if(f.babas > 0) tagsHTML += `<span class="tag tbb">${f.babas} babá${f.babas>1?'s':''}</span>`;
-    if(f.bebes > 0) tagsHTML += `<span class="tag tb">${f.bebes} bebê 🍼</span>`;
+    if(f.babas    > 0) tagsHTML += `<span class="tag tbb">${f.babas} babá${f.babas>1?'s':''}</span>`;
+    if(f.bebes    > 0) tagsHTML += `<span class="tag tb">${f.bebes} bebê 🍼</span>`;
 
-    // Célula "Já Pagou"
-    const pagouHTML = f.pagou > 0
-      ? `<span class="pagou-val">${formatarMoeda(f.pagou)}</span>`
-      : `<span class="pagou-zero">— nada ainda</span>`;
+    // ── Célula PIX ──
+    let pixHTML;
+    if (f.geraldo) {
+      pixHTML = `<span class="saldo-virtual">🏦 ${formatarMoeda(pixEfetivo)} (virtual)</span>`;
+    } else if (f.pagouPix > 0) {
+      pixHTML = `<span class="pix-val">${formatarMoeda(f.pagouPix)}</span>`;
+    } else {
+      pixHTML = `<span class="pix-zero">— nada ainda</span>`;
+    }
 
-    // Célula "Saldo"
+    // ── Célula Adiantou ──
+    const adiantouHTML = f.adiantou > 0
+      ? `<span class="adiantou-val">${formatarMoeda(f.adiantou)}</span>`
+      : `<span class="pix-zero">—</span>`;
+
+    // ── Célula Saldo ──
     let saldoHTML;
     if (Math.abs(saldo) < 0.01) {
       saldoHTML = `<span class="saldo-ok">✅ Quitado</span>`;
     } else if (saldo > 0) {
       saldoHTML = `<span class="saldo-deve">▲ ${formatarMoeda(saldo)}</span>`;
     } else {
-      saldoHTML = `<span class="saldo-receber">▼ ${formatarMoeda(Math.abs(saldo))} a receber</span>`;
+      // Deve receber de volta: mostra saldo total a receber + quanto já foi devolvido
+      const aReceber = Math.abs(saldo);
+      saldoHTML = `<span class="saldo-receber">▼ ${formatarMoeda(aReceber)}</span>`;
+      if (f.geraldoTransferiu > 0) {
+        saldoHTML += `<span class="devolvido-sub">✓ Devolvido: ${formatarMoeda(f.geraldoTransferiu)}</span>`;
+      }
+      if (aindaDevolver > 0.01) {
+        saldoHTML += `<span class="falta-sub">⏳ Falta devolver: ${formatarMoeda(aindaDevolver)}</span>`;
+      } else {
+        saldoHTML += `<span class="devolvido-sub">✅ Devolução completa!</span>`;
+      }
     }
 
-    // Classe da linha
-    let rowClass = '';
-    if (f.pagou > 0 && saldo <= 0.01) rowClass = 'row-paid';
-    else if (f.pagou > cotaFamilia)    rowClass = 'row-paid'; // pagou mais = destaque verde
+    const rowClass = (Math.abs(saldo) < 0.01 && totalContribuiu > 0) ? 'row-paid' : '';
 
     htmlTabelaRateio += `
       <tr class="${rowClass}">
-        <td><strong>${f.nome}</strong></td>
+        <td><strong>${f.nome}</strong>${f.geraldo ? ' <span style="font-size:.65rem;background:#f3e8ff;color:#6b21a8;padding:2px 6px;border-radius:4px;font-weight:800">GERALDO</span>' : ''}</td>
         <td>${tagsHTML}</td>
         <td class="cval" style="text-align:right">${formatarMoeda(cotaFamilia)}</td>
-        <td style="text-align:right">${pagouHTML}</td>
+        <td style="text-align:right">${pixHTML}</td>
+        <td style="text-align:right">${adiantouHTML}</td>
         <td style="text-align:right">${saldoHTML}</td>
       </tr>
     `;
   });
 
-  const saldoGeral = somaCotasCheias - somaTotalPago;
+  const somaPixTotalContabil = somaPixReal + somaPixVirtual;
+  const saldoGlobalAinda     = somaAinda;
+  const comprometido         = Math.max(0, somaADevolver - somaJaDevolvido);
 
-  // Adicionar linha de Totalização do Rateio
+  // Linha de totais
   htmlTabelaRateio += `
     <tr class="tot">
       <td colspan="2"><strong>TOTAL · ${qtdFamilias} famílias</strong></td>
-      <td style="text-align:right;font-size:1rem"><strong>${formatarMoeda(somaCotasCheias)}</strong></td>
-      <td style="text-align:right;font-size:1rem"><strong style="color:#1e40af">${formatarMoeda(somaTotalPago)}</strong></td>
-      <td style="text-align:right;font-size:1rem"><strong style="color:${saldoGeral > 0.01 ? '#dc2626' : '#15803d'}">${saldoGeral > 0.01 ? '▲ ' + formatarMoeda(saldoGeral) : '✅ ' + formatarMoeda(Math.abs(saldoGeral))}</strong></td>
+      <td style="text-align:right"><strong>${formatarMoeda(somaCotasCheias)}</strong></td>
+      <td style="text-align:right"><strong style="color:#1e40af">${formatarMoeda(somaPixReal)}<br><span style="font-size:.7rem;color:#6b21a8">+${formatarMoeda(somaPixVirtual)} virtual</span></strong></td>
+      <td style="text-align:right"><strong style="color:#92400e">${formatarMoeda(somaAdiantou)}</strong></td>
+      <td style="text-align:right"><strong style="color:${saldoGlobalAinda > 0.01 ? '#dc2626' : '#15803d'}">${formatarMoeda(saldoGlobalAinda)} a receber</strong></td>
     </tr>
   `;
 
   document.getElementById('tabela-rateio').innerHTML = htmlTabelaRateio;
 
-  // D. Painel de situação financeira
-  const famAReceber = CONFIGURACAO_DA_FESTA.familias.filter(f => {
-    let cota = custoAluguelPorFamilia + custoTrioPorFamilia;
-    cota += f.criancas * custoRecreacaoPorCrianca;
-    const peso = (f.adultos * CONFIGURACAO_DA_FESTA.pesosBuffet.adulto)
+  // D. Painel Financeiro (situação de caixa do Geraldo)
+  const credoresHTML = CONFIGURACAO_DA_FESTA.familias
+    .filter(f => {
+      // recalcular saldo para filtro
+      let cota = custoAluguelPorFamilia + custoTrioPorFamilia + (f.criancas * custoRecreacaoPorCrianca);
+      const pb = (f.adultos * CONFIGURACAO_DA_FESTA.pesosBuffet.adulto)
                + (f.criancas * CONFIGURACAO_DA_FESTA.pesosBuffet.crianca)
                + (f.babas * CONFIGURACAO_DA_FESTA.pesosBuffet.baba);
-    cota += peso * custoBuffetPorUnidade;
-    return f.pagou > cota + 0.01;
-  });
+      cota += pb * custoBuffetPorUnidade;
+      const pix = f.geraldo ? Math.max(0, cota - f.adiantou) : f.pagouPix;
+      return (pix + f.adiantou) > cota + 0.01;
+    })
+    .map(f => {
+      let cota = custoAluguelPorFamilia + custoTrioPorFamilia + (f.criancas * custoRecreacaoPorCrianca);
+      const pb = (f.adultos * CONFIGURACAO_DA_FESTA.pesosBuffet.adulto)
+               + (f.criancas * CONFIGURACAO_DA_FESTA.pesosBuffet.crianca)
+               + (f.babas * CONFIGURACAO_DA_FESTA.pesosBuffet.baba);
+      cota += pb * custoBuffetPorUnidade;
+      const pix = f.geraldo ? Math.max(0, cota - f.adiantou) : f.pagouPix;
+      const aReceber = Math.abs(cota - (pix + f.adiantou));
+      const faltaDevolver = Math.max(0, aReceber - f.geraldoTransferiu);
+      return `<tr>
+        <td style="padding:.4rem .6rem"><strong>${f.nome}</strong></td>
+        <td style="padding:.4rem .6rem;text-align:right">adiantou <span class="adiantou-val">${formatarMoeda(f.adiantou)}</span></td>
+        <td style="padding:.4rem .6rem;text-align:right">cota <span class="pix-val">${formatarMoeda(cota)}</span></td>
+        <td style="padding:.4rem .6rem;text-align:right">a receber <span class="saldo-receber">▼ ${formatarMoeda(aReceber)}</span></td>
+        <td style="padding:.4rem .6rem;text-align:right">${f.geraldoTransferiu > 0 ? `devolvido <span class="saldo-ok">${formatarMoeda(f.geraldoTransferiu)}</span>` : ''}</td>
+        <td style="padding:.4rem .6rem;text-align:right">${faltaDevolver > 0.01 ? `<span class="saldo-deve">falta ${formatarMoeda(faltaDevolver)}</span>` : '<span class="saldo-ok">✅</span>'}</td>
+      </tr>`;
+    }).join('');
 
-  if (famAReceber.length > 0 || somaTotalPago > 0) {
-    let painelHTML = `<div class="callout" style="background:#f0fdf4;border-left:4px solid #15803d;margin-top:1rem">
-      <p class="ctitle" style="color:#14532d">💰 Situação financeira atual</p>
-      <p class="ctext">
-        Total arrecadado: <strong>${formatarMoeda(somaTotalPago)}</strong> &nbsp;|&nbsp;
-        A receber ainda: <strong style="color:#dc2626">${formatarMoeda(Math.max(0, saldoGeral))}</strong>`;
-    if (famAReceber.length > 0) {
-      painelHTML += `<br><br>⚠️ <strong>Famílias com saldo a receber (adiantaram para fornecedores):</strong> `;
-      painelHTML += famAReceber.map(f => `<span style="background:#bbf7d0;color:#14532d;padding:2px 8px;border-radius:4px;font-weight:700">${f.nome}</span>`).join(' ');
-    }
-    painelHTML += `</p></div>`;
-    document.getElementById('painel-financeiro').innerHTML = painelHTML;
-  }
+  document.getElementById('painel-financeiro').innerHTML = `
+    <p class="slabel" style="margin-top:1.2rem">💼 Situação do Caixa (Geraldo)</p>
+    <div class="fin-grid">
+      <div class="fin-card">
+        <span class="fin-ico">💰</span>
+        <span class="fin-val" style="color:#1e40af">${formatarMoeda(somaPixReal)}</span>
+        <span class="fin-lbl">PIX real recebido</span>
+      </div>
+      <div class="fin-card">
+        <span class="fin-ico">🏦</span>
+        <span class="fin-val" style="color:#6b21a8">${formatarMoeda(somaPixVirtual)}</span>
+        <span class="fin-lbl">Minha cota (virtual)</span>
+      </div>
+      <div class="fin-card">
+        <span class="fin-ico">📥</span>
+        <span class="fin-val" style="color:#dc2626">${formatarMoeda(saldoGlobalAinda)}</span>
+        <span class="fin-lbl">Ainda a receber</span>
+      </div>
+      <div class="fin-card">
+        <span class="fin-ico">⚠️</span>
+        <span class="fin-val" style="color:#92400e">${formatarMoeda(comprometido)}</span>
+        <span class="fin-lbl">Comprometido (a devolver)</span>
+      </div>
+    </div>
+    <div class="callout" style="background:#f8fafc;border-left:4px solid #374151;margin-top:.9rem;padding:1rem 1.2rem">
+      <p class="ctitle" style="color:#1e293b;margin-bottom:.6rem">💸 Devoluções a quem adiantou para fornecedores</p>
+      <div style="overflow-x:auto">
+        <table style="font-size:.82rem;margin:0">
+          <tbody>${credoresHTML || '<tr><td colspan="6" style="color:var(--light);padding:.5rem">Nenhuma devolução pendente.</td></tr>'}</tbody>
+        </table>
+      </div>
+      <p style="font-size:.75rem;color:var(--light);margin-top:.6rem">
+        💡 <strong>Caixa livre</strong> (PIX real − comprometido) = <strong style="color:#15803d">${formatarMoeda(Math.max(0, somaPixReal - comprometido))}</strong>
+        — disponível para pagar o restante dos fornecedores.
+      </p>
+    </div>
+  `;
 
 </script>
 </body>
