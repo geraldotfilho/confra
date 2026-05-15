@@ -715,12 +715,12 @@ footer p + p { margin-top:.3rem; }
       : f.pagouPix;
 
     const totalContribuiu = pixEfetivo + f.adiantou;
-    const saldo = cotaFamilia - totalContribuiu;
+    const saldo = cotaFamilia - totalContribuiu + f.geraldoTransferiu;
     // saldo > 0  → ainda deve
     // saldo < 0  → adiantou mais que a cota, Geraldo deve devolver |saldo|
     // saldo = 0  → quitado
 
-    const aindaDevolver = Math.max(0, -saldo - f.geraldoTransferiu);
+    const aindaDevolver = Math.max(0, -saldo);
 
     // Acumular totais globais
     somaCotasCheias += cotaFamilia;
