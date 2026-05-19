@@ -760,7 +760,7 @@ footer p + p { margin-top:.3rem; }
 
     // ── Célula Saldo ──
     let saldoHTML;
-    if (Math.abs(saldo) < 0.01) {
+    if (Math.abs(saldo) < 1) {
       saldoHTML = `<span class="saldo-ok">✅ Quitado</span>`;
     } else if (saldo > 0) {
       saldoHTML = `<span class="saldo-deve">▲ ${formatarMoeda(saldo)}</span>`;
