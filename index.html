@@ -872,8 +872,8 @@ footer p + p { margin-top:.3rem; }
         </table>
       </div>
       <p style="font-size:.75rem;color:var(--light);margin-top:.6rem">
-        💡 <strong>Caixa livre</strong> (PIX real − comprometido) = <strong style="color:#15803d">${formatarMoeda(Math.max(0, somaPixReal - comprometido - somaJaDevolvido))}</strong>
-        — disponível para pagar o restante dos fornecedores.
+        💡 <strong>Caixa atual</strong> (PIX real + virtual - já devolvido) = <strong style="color:#15803d">${formatarMoeda(Math.max(0, somaPixTotalContabil - somaJaDevolvido))}</strong>
+        — dinheiro atualmente em minha conta para a festa.
       </p>
     </div>
   `;
